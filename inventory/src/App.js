@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Info from "./info.js";
+import {PropTypes} from "prop-types";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          My website is running!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Info title="Inventory"/>
+      <AddItem text="Andy" number={7}/>
+      <AddItem text="Jim"/>
+      <AddItem/>
     </div>
   );
 }
+
+function AddItem(props) {
+  return (
+    <from>
+      <lable for="text-form"> Type something: </lable>
+      <input type="text" value={props.text} id="text-form" />
+      <p>{props.number ? props.number : "no number"}</p>
+    </from>
+  );
+}
+
+AddItem.defaultProps = {
+  number: 2,
+  text: "Name",
+};
+
+AddItem.prototype = {
+  number: PropTypes.number,
+  text: PropTypes.string,
+};
 
 export default App;
